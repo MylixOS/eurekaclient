@@ -12,7 +12,7 @@ func main() {
 	// create eureka client
 	client := eureka.NewClient(&eureka.Config{
 		//DefaultZone:           "http://localhost:8761/eureka/",
-		DefaultZone:           "http://admin:123456@118.118.118.11:9090/eureka/",
+		DefaultZone: "http://admin:123456@118.118.118.11:9090/eureka/",
 		//DefaultZone:           "http://admin:123456@eureka.t.dacube.cn/eureka/",
 		App:                   "go-example",
 		Port:                  10000,
@@ -45,7 +45,6 @@ func main() {
 		fmt.Println(err)
 	}
 
-
 }
 
 func printApp(client *eureka.Client) {
@@ -53,7 +52,7 @@ func printApp(client *eureka.Client) {
 		app, b := client.GetAppByName("COMPANY-ADMIN-NEW")
 		fmt.Println("app: ", "COMPANY-ADMIN-NEW ", app, b)
 		sleep := time.Duration(client.Config.RegistryFetchIntervalSeconds)
-		fmt.Println("sleep seconds", sleep * time.Second, " seconds")
+		fmt.Println("sleep seconds", sleep*time.Second, " seconds")
 		time.Sleep(sleep * time.Second)
 	}
 }

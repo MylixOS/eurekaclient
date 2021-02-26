@@ -167,13 +167,12 @@ func defaultConfig(config *Config) {
 	}
 }
 
-
-func (c *Client)GetAppByName(appName string) (*Application, bool) {
+func (c *Client) GetAppByName(appName string) (*Application, bool) {
 	if nil == c.Applications || nil == c.Applications.Applications {
 		return nil, false
 	}
 	for _, value := range c.Applications.Applications {
-		if  value.Name == appName {
+		if value.Name == appName {
 			return &value, true
 		}
 	}

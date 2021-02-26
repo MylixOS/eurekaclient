@@ -71,7 +71,7 @@ func Refresh(zone string) (*Applications, error) {
 // PUT /eureka/v2/apps/appID/instanceID
 func Heartbeat(zone, app, instanceID string) error {
 	u := zone + "apps/" + app + "/" + instanceID
-	params := url.Values {
+	params := url.Values{
 		"status": {"UP"},
 	}
 	result := httpclient.Put(u).Params(params).Send()

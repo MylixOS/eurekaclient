@@ -70,7 +70,7 @@ func main() {
 
 ## 测试
 
-我使用的是Java`spring-cloud-starter-netflix-eureka-server`.
+使用的是Java`spring-cloud-starter-netflix-eureka-server`.
 
 ```xml
 <dependency>
