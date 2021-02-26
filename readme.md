@@ -80,6 +80,4 @@ func main() {
 </dependency>
 ```
 
-代码如下:
 
-[spring-cloud-v2](https://github.com/xuanbo/spring-cloud-v2)
