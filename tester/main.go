@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	eureka "eurekaclient/client"
+	eureka "github.com/mylixos/eurekaclient/client"
 	"fmt"
 	"net/http"
 	"time"

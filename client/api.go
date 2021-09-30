@@ -2,7 +2,7 @@ package eurekaclient
 
 import (
 	"errors"
-	"eurekaclient/httpclient"
+	"github.com/mylixos/eurekaclient/httpclient"
 	"fmt"
 	"net/http"
 	"net/url"
