@@ -47,7 +47,7 @@ func (c *Client) refresh() {
 			if err := c.doRefresh(); err != nil {
 				log.Println(err)
 			} else {
-				log.Println("refresh application instance successful")
+				//log.Println("refresh application instance successful")
 			}
 		} else {
 			break
@@ -71,7 +71,7 @@ func (c *Client) heartbeat() {
 				}
 				log.Println(err)
 			} else {
-				log.Println("heartbeat application instance successful")
+				//log.Println("heartbeat application instance successful")
 			}
 		} else {
 			break

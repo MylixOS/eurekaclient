@@ -2,8 +2,8 @@ package main
 
 import (
 	"encoding/json"
-	eureka "github.com/mylixos/eurekaclient/client"
 	"fmt"
+	eureka "github.com/mylixos/eurekaclient/client"
 	"net/http"
 	"time"
 )
@@ -12,8 +12,9 @@ func main() {
 	// create eureka client
 	client := eureka.NewClient(&eureka.Config{
 		//DefaultZone:           "http://localhost:8761/eureka/",
-		DefaultZone: "http://admin:123456@118.118.118.11:9090/eureka/",
+		//DefaultZone: "http://admin:123456@118.118.118.11:9090/eureka/",
 		//DefaultZone:           "http://admin:123456@eureka.t.dacube.cn/eureka/",
+		DefaultZone:           "http://admintest:PlvBx0FSHit8R3cE@eureka.t.dacube.cn/eureka/",
 		App:                   "go-example",
 		Port:                  10000,
 		RenewalIntervalInSecs: 10,
