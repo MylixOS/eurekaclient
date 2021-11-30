@@ -10,6 +10,7 @@ import (
 
 func main() {
 	// create eureka client
+	/*
 	client := eureka.NewClient(&eureka.Config{
 		//DefaultZone:           "http://localhost:8761/eureka/",
 		//DefaultZone: "http://admin:123456@118.118.118.11:9090/eureka/",
@@ -28,6 +29,12 @@ func main() {
 			"SERVICE_VERSION_CODE": "DEFAULT",
 		},
 	})
+	*/
+	client := eureka.NewClient(eureka.NewConfig(
+		"http://admintest:PlvBx0FSHit8R3cE@eureka.t.dacube.cn/eureka/",
+		"go-example",
+		10000,
+		))
 	go printApp(client)
 	// start client, register、heartbeat、refresh
 	client.Start()

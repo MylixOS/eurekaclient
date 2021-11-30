@@ -128,3 +128,31 @@ func NewInstance(ip string, config *Config) *Instance {
 	instance.StatusPageURL = fmt.Sprintf("http://%s:%d/info", ip, config.Port)
 	return instance
 }
+
+func NewConfig(defaultZone, appName string, port int) *Config {
+	return &Config{
+		DefaultZone:           defaultZone,
+		App:                   appName,
+		Port:                  port,
+		RenewalIntervalInSecs: 10,
+		DurationInSecs:        30,
+		Metadata: map[string]interface{}{
+			"VERSION":              "0.1.0",
+			"NODE_GROUP_ID":        0,
+			"PRODUCT_CODE":         "DEFAULT",
+			"PRODUCT_VERSION_CODE": "DEFAULT",
+			"PRODUCT_ENV_CODE":     "DEFAULT",
+			"SERVICE_VERSION_CODE": "DEFAULT",
+		},
+	}
+}
+
+func (c *Config) SetRenwalIntervalInSecs(renwalIntervalInSecs int) *Config {
+	c.RenewalIntervalInSecs = renwalIntervalInSecs
+	return c
+}
+
+func (c *Config) SetDurationInSecs(durationInSecs int) *Config {
+	c.DurationInSecs = durationInSecs
+	return c
+}
