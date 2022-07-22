@@ -2,8 +2,8 @@ package eurekaclient
 
 import (
 	"errors"
-	"github.com/mylixos/eurekaclient/httpclient"
 	"fmt"
+	"github.com/mylixos/eurekaclient/httpclient"
 	"net/http"
 	"net/url"
 )
@@ -13,7 +13,7 @@ var (
 	ErrNotFound = errors.New("not found")
 )
 
-// 与eureka服务端rest交互
+// 与 eureka 服务端 rest 交互
 // https://github.com/Netflix/eureka/wiki/Eureka-REST-operations
 
 // Register 注册实例
@@ -78,7 +78,7 @@ func Heartbeat(zone, app, instanceID string) error {
 	if result.Err != nil {
 		return fmt.Errorf("heartbeat failed, error: %s", result.Err)
 	}
-	// 心跳 404 说明eureka server重启过，需要重新注册
+	// 心跳 404 说明 eureka server 重启过，需要重新注册
 	if result.Resp.StatusCode == http.StatusNotFound {
 		return ErrNotFound
 	}

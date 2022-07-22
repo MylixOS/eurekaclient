@@ -9,32 +9,13 @@ import (
 )
 
 func main() {
+
 	// create eureka client
-	/*
-	client := eureka.NewClient(&eureka.Config{
-		//DefaultZone:           "http://localhost:8761/eureka/",
-		//DefaultZone: "http://admin:123456@118.118.118.11:9090/eureka/",
-		//DefaultZone:           "http://admin:123456@eureka.t.dacube.cn/eureka/",
-		DefaultZone:           "http://admintest:PlvBx0FSHit8R3cE@eureka.t.dacube.cn/eureka/",
-		App:                   "go-example",
-		Port:                  10000,
-		RenewalIntervalInSecs: 10,
-		DurationInSecs:        30,
-		Metadata: map[string]interface{}{
-			"VERSION":              "0.1.0",
-			"NODE_GROUP_ID":        0,
-			"PRODUCT_CODE":         "DEFAULT",
-			"PRODUCT_VERSION_CODE": "DEFAULT",
-			"PRODUCT_ENV_CODE":     "DEFAULT",
-			"SERVICE_VERSION_CODE": "DEFAULT",
-		},
-	})
-	*/
 	client := eureka.NewClient(eureka.NewConfig(
-		"http://admintest:PlvBx0FSHit8R3cE@eureka.t.dacube.cn/eureka/",
-		"go-example",
+		"", // eureka server endpoint
+		"go-client-example",
 		10000,
-		))
+	))
 	go printApp(client)
 	// start client, register、heartbeat、refresh
 	client.Start()
@@ -58,9 +39,22 @@ func main() {
 func printApp(client *eureka.Client) {
 	for true {
 		app, b := client.GetAppByName("COMPANY-ADMIN-NEW")
-		fmt.Println("app: ", "COMPANY-ADMIN-NEW ", app, b)
+		//if client.Applications != nil {
+		//	appBytes, e := json.Marshal(client.Applications.Applications)
+		//	if e != nil {
+		//		fmt.Println("Marshal apps Error")
+		//	}
+		//	fmt.Println("Apps:\n\t", string(appBytes), "\n\n")
+		//}
+		if b {
+			bytes, err := json.Marshal(app)
+			if err != nil {
+				fmt.Println("Marshal apps Error")
+			}
+			fmt.Println("COMPANY-ADMIN-NEW App:\n\t", string(bytes))
+		}
 		sleep := time.Duration(client.Config.RegistryFetchIntervalSeconds)
-		fmt.Println("sleep seconds", sleep*time.Second, " seconds")
+		fmt.Println("printApp sleep seconds", sleep*time.Second, " seconds")
 		time.Sleep(sleep * time.Second)
 	}
 }

@@ -129,8 +129,10 @@ func (c *Client) handleSignal() {
 			err := c.doUnRegister()
 			if err != nil {
 				log.Println(err.Error())
+				log.Println("eureka client exit with unregister Error.")
 			} else {
 				log.Println("unRegister application instance successful")
+				log.Println("eureka client exit normally.")
 			}
 			os.Exit(0)
 		}

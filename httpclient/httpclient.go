@@ -84,12 +84,12 @@ func Delete(url string) *HttpClient {
 }
 
 // Request 用于自定义请求方式，比如`HEAD`、`PATCH`、`OPTIONS`、`TRACE`
-// client参数用于替换DefaultClient，如果为nil则会使用默认的
+// client 参数用于替换 DefaultClient， 如果为 nil 则会使用默认的
 func Request(url, method string, client *http.Client) *HttpClient {
 	return newClient(url, method, client)
 }
 
-// Params http请求中url参数
+// Params http 请求中 url 参数
 func (c *HttpClient) Params(params url.Values) *HttpClient {
 	for k, v := range params {
 		c.params[k] = v
@@ -103,7 +103,7 @@ func (c *HttpClient) Header(k, v string) *HttpClient {
 	return c
 }
 
-// Headers http请求头
+// Headers http 请求头
 func (c *HttpClient) Headers(header http.Header) *HttpClient {
 	for k, v := range header {
 		c.header[k] = v
@@ -278,7 +278,6 @@ func (c *HttpClient) doSend(req *http.Request, result *Result) {
 		result.Err = err
 		return
 	}
-
 	// 发送请求
 	result.Resp, result.Err = c.client.Do(req)
 }
